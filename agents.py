@@ -13,7 +13,7 @@ def create_agents_for_group_chat() -> Swarm:
     """
     # Create the Client
     model_client = OllamaChatCompletionClient(
-        model="qwen2.5-coder",
+        model="qwen3:8b",
         host="http://localhost:11434",
         model_info={
             "json_output": True,
@@ -96,19 +96,19 @@ def create_agents_for_group_chat() -> Swarm:
     )
 
 
-selector_prompt = """Select an agent to perform task.
+    selector_prompt = """Select an agent to perform task.
 
-{roles}
+    {roles}
 
-Current conversation context:
-{history}
+    Current conversation context:
+    {history}
 
-Read the above conversation, then select an agent from {participants} to perform the next task.
-Make sure the planner agent has assigned tasks before other agents start working.
-Only select one agent.
-"""
+    Read the above conversation, then select an agent from {participants} to perform the next task.
+    Make sure the planner agent has assigned tasks before other agents start working.
+    Only select one agent.
+    """
 
-    # Create swarm with orchestration instructions
+        # Create swarm with orchestration instructions
     economic_swarm = SelectorGroupChat(
         [
             data_gatherer_agent,
