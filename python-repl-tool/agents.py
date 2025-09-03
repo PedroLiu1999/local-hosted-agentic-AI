@@ -51,7 +51,7 @@ py_repl = PythonAstREPLTool(locals=tool_locals)
 py_tool = LangChainToolAdapter(py_repl)
 
 model_client = OllamaChatCompletionClient(
-    model="qwen2.5-coder",
+    model="qwen3:8b",
     host="http://localhost:11434"
     )
 
